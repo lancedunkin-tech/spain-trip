@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lance & Missy — Spain 2026!</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Nunito:wght@400;700;900&display=swap');
+
+  :root {
+    --sangria: #8b1a1a;
+    --terracotta: #c84b31;
+    --gold: #d4a017;
+    --gold-light: #f0d68a;
+    --olive: #4a6741;
+    --cream: #fdf6ec;
+    --tile-blue: #2e6b8a;
+    --deep: #1a0f0a;
+    --white: #ffffff;
+    --warm-gray: #6b5b4f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(180deg, #d4a017 0%, #c84b31 15%, #8b1a1a 35%, #1a0f0a 60%, #0d1b2a 100%);
+    min-height: 100vh;
+    color: var(--cream);
+    overflow-x: hidden;
+  }
+
+  /* Decorative tiles pattern overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      radial-gradient(circle at 25% 25%, rgba(212,160,23,0.03) 0%, transparent 50%),
+      radial-gradient(circle at 75% 75%, rgba(200,75,49,0.03) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container { max-width: 900px; margin: 0 auto; padding: 1.5rem; position: relative; z-index: 1; }
+
+  /* HERO */
+  .hero {
+    text-align: center;
+    padding: 2.5rem 1.5rem 2rem;
+    background: linear-gradient(135deg, rgba(139,26,26,0.3), rgba(212,160,23,0.2));
+    border: 1px solid rgba(212,160,23,0.3);
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(212,160,23,0.08) 0%, transparent 60%);
+    animation: glow 6s ease-in-out infinite;
+  }
+  @keyframes glow { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+  .hero-emoji { font-size: 3.5rem; position: relative; }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--gold-light);
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+    margin: 0.5rem 0;
+    line-height: 1.1;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-size: 1.2rem;
+    color: rgba(253,246,236,0.8);
+    font-weight: 700;
+    position: relative;
+  }
+  .hero .route {
+    font-size: 0.95rem;
+    color: var(--gold);
+    font-weight: 700;
+    margin-top: 0.5rem;
+    position: relative;
+    letter-spacing: 1px;
+  }
+
+  /* COUNTDOWN */
+  .countdown-box {
+    background: linear-gradient(135deg, var(--sangria), var(--terracotta));
+    border-radius: 20px;
+    padding: 1.5rem;
+    text-align: center;
+    margin: 1.5rem 0;
+    box-shadow: 0 8px 30px rgba(139,26,26,0.4);
+    border: 1px solid rgba(212,160,23,0.3);
+  }
+  .countdown-box .label {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--gold-light);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  .countdown-numbers { display: flex; justify-content: center; gap: 1rem; margin-top: 0.8rem; flex-wrap: wrap; }
+  .countdown-unit { background: rgba(0,0,0,0.2); border-radius: 12px; padding: 0.8rem 1.2rem; min-width: 80px; border: 1px solid rgba(212,160,23,0.2); }
+  .countdown-unit .num { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--gold-light); line-height: 1; }
+  .countdown-unit .unit-label { font-size: 0.7rem; color: rgba(253,246,236,0.7); text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
+
+  /* PHOTOS */
+  .photo-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin: 1.5rem 0; }
+  .photo-grid img {
+    width: 100%; height: 200px; object-fit: cover;
+    border-radius: 14px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border: 2px solid rgba(212,160,23,0.2); transition: transform 0.3s;
+  }
+  .photo-grid img:hover { transform: scale(1.04); }
+  .photo-grid .photo-label {
+    text-align: center; font-family: 'Playfair Display', serif;
+    font-size: 0.85rem; color: var(--gold-light); margin-top: 0.3rem;
+  }
+  @media (max-width: 600px) { .photo-grid { grid-template-columns: 1fr 1fr; } }
+
+  /* SECTION TITLES */
+  .section-title {
+    font-family: 'Playfair Display', serif; font-size: 1.6rem;
+    color: var(--gold-light); text-shadow: 1px 1px 0 rgba(0,0,0,0.2);
+    margin: 2.5rem 0 1rem; text-align: center;
+  }
+
+  /* THE COUPLE */
+  .couple-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 500px; margin: 0 auto; }
+  .couple-card {
+    background: rgba(253,246,236,0.95); border-radius: 16px; padding: 1.5rem;
+    text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); color: var(--deep);
+    transition: transform 0.2s;
+  }
+  .couple-card:hover { transform: scale(1.04) rotate(-1deg); }
+  .couple-card:nth-child(2):hover { transform: scale(1.04) rotate(1deg); }
+  .couple-card .big-emoji { font-size: 3rem; }
+  .couple-card .card-name { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--sangria); margin: 0.3rem 0; }
+  .couple-card .card-title { font-size: 0.8rem; color: var(--terracotta); font-weight: 700; }
+
+  /* FUN CARD */
+  .fun-card {
+    background: rgba(253,246,236,0.95); border-radius: 16px; padding: 1.5rem;
+    margin-bottom: 1rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2); color: var(--deep);
+  }
+  .fun-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.2rem;
+    color: var(--sangria); margin-bottom: 0.8rem;
+  }
+
+  /* STAY CARDS */
+  .stay-card {
+    background: rgba(253,246,236,0.95); border-radius: 16px; padding: 1.2rem;
+    margin-bottom: 0.8rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    display: flex; gap: 1rem; align-items: flex-start; color: var(--deep);
+  }
+  .stay-card .stay-emoji { font-size: 2.5rem; flex-shrink: 0; }
+  .stay-card h4 { font-family: 'Playfair Display', serif; color: var(--sangria); font-size: 1rem; }
+  .stay-card .stay-dates { font-size: 0.85rem; color: var(--terracotta); font-weight: 700; }
+  .stay-card .stay-address { font-size: 0.82rem; color: var(--warm-gray); margin-top: 0.2rem; font-style: italic; }
+  .stay-card .stay-detail { font-size: 0.82rem; color: var(--warm-gray); margin-top: 0.2rem; }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 2.5rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 12px; top: 0; bottom: 0; width: 4px;
+    background: linear-gradient(to bottom, var(--gold), var(--terracotta), var(--sangria), var(--tile-blue));
+    border-radius: 2px;
+  }
+  .timeline-item {
+    position: relative; margin-bottom: 0.8rem; padding: 0.8rem 1rem;
+    background: rgba(212,160,23,0.06); border-radius: 12px; border-left: 3px solid var(--gold);
+  }
+  .timeline-item.flight { background: rgba(46,107,138,0.08); border-left-color: var(--tile-blue); }
+  .timeline-item.highlight { background: rgba(74,103,65,0.08); border-left-color: var(--olive); }
+  .timeline-item.epic { background: rgba(139,26,26,0.06); border-left-color: var(--sangria); }
+  .timeline-item::before {
+    content: ''; position: absolute; left: -2.15rem; top: 1rem;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--gold); border: 3px solid var(--cream); box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  }
+  .timeline-item .t-time { font-family: 'Playfair Display', serif; color: var(--sangria); font-size: 0.9rem; }
+  .timeline-item .t-what { font-weight: 700; font-size: 1rem; color: var(--deep); }
+  .timeline-item .t-detail { font-size: 0.85rem; color: var(--warm-gray); margin-top: 0.2rem; }
+  .timeline-item .t-callout {
+    display: inline-block; margin-top: 0.3rem; font-size: 0.75rem; font-weight: 700;
+    background: linear-gradient(135deg, var(--sangria), var(--terracotta)); color: var(--cream);
+    padding: 0.2rem 0.6rem; border-radius: 20px;
+  }
+
+  /* ADVENTURE LIST */
+  .adventure-list { list-style: none; padding: 0; }
+  .adventure-list li {
+    padding: 0.6rem 0; border-bottom: 2px dashed rgba(139,26,26,0.12);
+    font-size: 1rem; font-weight: 700; display: flex; align-items: center; gap: 0.6rem;
+    color: var(--deep);
+  }
+  .adventure-list li:last-child { border-bottom: none; }
+  .adventure-list .li-emoji { font-size: 1.4rem; flex-shrink: 0; }
+  .adventure-list .cool-factor {
+    margin-left: auto; font-size: 0.7rem;
+    background: linear-gradient(135deg, var(--sangria), var(--gold));
+    color: var(--cream); padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap;
+  }
+
+  /* FACTS GRID */
+  .facts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+  @media (max-width: 600px) { .facts-grid { grid-template-columns: 1fr; } }
+  .fact-card {
+    background: linear-gradient(135deg, rgba(139,26,26,0.06), rgba(212,160,23,0.06));
+    border: 2px solid rgba(212,160,23,0.2); border-radius: 14px; padding: 1rem; text-align: center;
+  }
+  .fact-card .fact-emoji { font-size: 2.2rem; }
+  .fact-card .fact-text { font-size: 0.85rem; font-weight: 700; color: var(--sangria); margin-top: 0.3rem; }
+  .fact-card .fact-detail { font-size: 0.75rem; color: var(--warm-gray); margin-top: 0.2rem; }
+
+  /* DAY CARD */
+  .day-card {
+    background: rgba(253,246,236,0.95); border-radius: 16px; padding: 1.2rem;
+    margin-bottom: 0.8rem; box-shadow: 0 4px 20px rgba(0,0,0,0.2); color: var(--deep);
+  }
+  .day-card h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.05rem;
+    color: var(--sangria); margin-bottom: 0.5rem;
+  }
+  .day-card ul { list-style: none; padding: 0; }
+  .day-card li { padding: 0.3rem 0; padding-left: 1.5rem; position: relative; font-size: 0.9rem; font-weight: 600; }
+  .day-card li::before {
+    content: '●'; position: absolute; left: 0.2rem; color: var(--gold);
+    font-weight: 900; font-size: 0.7rem; top: 0.5rem;
+  }
+
+  .footer { text-align: center; padding: 2rem; font-size: 2rem; line-height: 1.8; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-emoji">🇪🇸</div>
+    <h1>SPAIN 2026</h1>
+    <div class="subtitle">Lance & Missy — Andalusia</div>
+    <div class="route">Seville → Granada → Nerja &bull; April 20–28</div>
+  </div>
+
+  <!-- COUNTDOWN -->
+  <div class="countdown-box">
+    <div class="label">Countdown to Departure</div>
+    <div class="countdown-numbers" id="countdown">
+      <div class="countdown-unit"><div class="num" id="days">--</div><div class="unit-label">Days</div></div>
+      <div class="countdown-unit"><div class="num" id="hours">--</div><div class="unit-label">Hours</div></div>
+      <div class="countdown-unit"><div class="num" id="mins">--</div><div class="unit-label">Mins</div></div>
+      <div class="countdown-unit"><div class="num" id="secs">--</div><div class="unit-label">Secs</div></div>
+    </div>
+  </div>
+
+  <!-- PHOTOS -->
+  <div class="photo-grid">
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/af/Sevilla_Plaza_de_Espa%C3%B1a_2023c.jpg/960px-Sevilla_Plaza_de_Espa%C3%B1a_2023c.jpg" alt="Plaza de España Seville">
+      <div class="photo-label">Plaza de España, Seville</div>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/Dawn_Charles_V_702702.jpg/960px-Dawn_Charles_V_702702.jpg" alt="Alhambra Granada">
+      <div class="photo-label">The Alhambra, Granada</div>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Balc%C3%B3n_de_Europa%2C_Nerja%2C_M%C3%A1laga.jpg/960px-Balc%C3%B3n_de_Europa%2C_Nerja%2C_M%C3%A1laga.jpg" alt="Balcón de Europa Nerja">
+      <div class="photo-label">Balcón de Europa, Nerja</div>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Patio_de_las_Doncellas%2C_Alc%C3%A1zar_de_Sevilla.jpg/960px-Patio_de_las_Doncellas%2C_Alc%C3%A1zar_de_Sevilla.jpg" alt="Real Alcázar Seville">
+      <div class="photo-label">Real Alcázar, Seville</div>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Mirador_de_San_Nicol%C3%A1s%2C_Granada%2C_Spain_-_panoramio.jpg/960px-Mirador_de_San_Nicol%C3%A1s%2C_Granada%2C_Spain_-_panoramio.jpg" alt="Albaicín Granada">
+      <div class="photo-label">Albaicín, Granada</div>
+    </div>
+    <div>
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Frigiliana_2023_-_Calle_Hernando_el_Darra.jpg/960px-Frigiliana_2023_-_Calle_Hernando_el_Darra.jpg" alt="Frigiliana White Village">
+      <div class="photo-label">Frigiliana (Day Trip)</div>
+    </div>
+  </div>
+
+  <!-- THE COUPLE -->
+  <div class="section-title">💃🕺 The Travelers</div>
+  <div class="couple-grid">
+    <div class="couple-card">
+      <div class="big-emoji">🕶️</div>
+      <div class="card-name">Lance</div>
+      <div class="card-title">Chief Navigator</div>
+    </div>
+    <div class="couple-card">
+      <div class="big-emoji">👑</div>
+      <div class="card-name">Missy</div>
+      <div class="card-title">Queen of Tapas</div>
+    </div>
+  </div>
+
+  <!-- WHERE WE'RE STAYING -->
+  <div class="section-title">🏠 Where We're Staying</div>
+
+  <div class="stay-card">
+    <div class="stay-emoji">🏰</div>
+    <div>
+      <h4>"The Roof of Sevilla" — Penthouse with Giralda Views</h4>
+      <div class="stay-dates">Monday Apr 21 – Wednesday Apr 23 &bull; 2 nights</div>
+      <div class="stay-address">Calle Federico Rubio 6, Ático, Seville 41004</div>
+      <div class="stay-detail">Penthouse with cathedral views from the rooftop &bull; Host: Fabio (+34 634 63 28 06) or Javier (+34 622 44 30 38) — WhatsApp &bull; Check-in 3:00 PM, Checkout 11:00 AM</div>
+    </div>
+  </div>
+
+  <div class="stay-card">
+    <div class="stay-emoji">🕌</div>
+    <div>
+      <h4>"Stunning Alhambra View Balconies" — Albaicín</h4>
+      <div class="stay-dates">Wednesday Apr 23 – Friday Apr 25 &bull; 2 nights</div>
+      <div class="stay-address">Calle Grifos de San José 2, Apt 2ºB, Granada 18010</div>
+      <div class="stay-detail">Watch the Alhambra light up from your balcony &bull; Host: Antonio (co-host: Nacho) — greets you at check-in &bull; No car access — pedestrian streets, taxi from station &bull; Check-in 3:00 PM, Checkout 11:00 AM</div>
+    </div>
+  </div>
+
+  <div class="stay-card">
+    <div class="stay-emoji">🏖️</div>
+    <div>
+      <h4>Hotel Balcón de Europa — Right on the Beach</h4>
+      <div class="stay-dates">Friday Apr 25 – Monday Apr 28 &bull; 3 nights</div>
+      <div class="stay-address">Paseo Balcón de Europa 1, 29780 Nerja, Málaga</div>
+      <div class="stay-detail">Famous viewpoint hotel! &bull; 3 beaches within steps &bull; Pool &bull; Parking garage €15/night (reserve at front desk) &bull; Check-in 2:00 PM, Checkout 12:00 PM</div>
+    </div>
+  </div>
+
+  <!-- =================== GETTING THERE =================== -->
+  <div class="section-title">✈️ Getting There — Door to Door</div>
+
+  <div class="fun-card">
+    <h3>✈️ Sunday, April 20 — Fly to Spain!</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-time">~3:00 PM</div>
+        <div class="t-what">Leave the House</div>
+        <div class="t-detail">Drive to XNA (Northwest Arkansas Regional Airport)</div>
+      </div>
+      <div class="timeline-item flight">
+        <div class="t-time">6:03 PM → 9:00 PM</div>
+        <div class="t-what">Flight 1: XNA → Atlanta</div>
+        <div class="t-detail">KL5518 (Delta CRJ700) &bull; Lance 10B, Missy 10A</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">9:00 – 9:55 PM</div>
+        <div class="t-what">Layover in Atlanta</div>
+        <div class="t-detail">55 minutes — tight! Head straight to the gate</div>
+        <div class="t-callout">Quick connection — no time to wander!</div>
+      </div>
+      <div class="timeline-item flight">
+        <div class="t-time">9:55 PM → 12:15 PM+1</div>
+        <div class="t-what">Flight 2: Atlanta → MADRID!</div>
+        <div class="t-detail">KL6028 (Delta A330-300) &bull; Lance 42B, Missy 42A &bull; Overnight flight</div>
+        <div class="t-callout">Try to sleep! 7 hours ahead when you land</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="fun-card">
+    <h3>🇪🇸 Monday, April 21 — Arrive → Seville</h3>
+    <div class="timeline">
+      <div class="timeline-item highlight">
+        <div class="t-time">12:15 PM (local)</div>
+        <div class="t-what">LAND IN MADRID!</div>
+        <div class="t-detail">Madrid-Barajas Airport (MAD) &bull; Welcome to Spain!</div>
+        <div class="t-callout">Passport stamps! Bienvenidos!</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">~1:00 PM</div>
+        <div class="t-what">Get to Madrid Atocha Station</div>
+        <div class="t-detail">Metro or taxi from the airport (~30 min)</div>
+      </div>
+      <div class="timeline-item epic">
+        <div class="t-time">~3:00–3:30 PM</div>
+        <div class="t-what">High-Speed Train: Madrid → Seville!</div>
+        <div class="t-detail">AVE train &bull; ~2 hr 40 min &bull; Speeds up to 190 mph through the Spanish countryside</div>
+        <div class="t-callout">Train tickets not booked yet — check Renfe.com ~March 1!</div>
+      </div>
+      <div class="timeline-item highlight">
+        <div class="t-time">~6:00–7:00 PM</div>
+        <div class="t-what">Arrive in Seville!</div>
+        <div class="t-detail">Check into the penthouse &bull; Giralda views from the roof</div>
+        <div class="t-callout">Contact Fabio or Javier on WhatsApp with your arrival time</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">Evening</div>
+        <div class="t-what">First Night in Seville</div>
+        <div class="t-detail">Explore the neighborhood, find tapas, soak it in</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== DAY BY DAY =================== -->
+  <div class="section-title">📅 The Adventure</div>
+
+  <div class="day-card">
+    <h3>🏰 Tuesday, April 22 — Full Day in Seville</h3>
+    <ul>
+      <li><strong>11:00 AM — Real Alcázar</strong> (enter via Puerta del León, arrive 10:45)</li>
+      <li>Stunning Moorish palace — Game of Thrones filmed here!</li>
+      <li>Bring passports — they check ID at entry</li>
+      <li>Seville Cathedral & La Giralda tower (right next door — climb it!)</li>
+      <li>Plaza de España — the most photographed spot in Seville</li>
+      <li>Barrio Santa Cruz — old Jewish quarter, narrow streets, hidden plazas</li>
+      <li>Flamenco show — find an authentic tablao</li>
+      <li>Triana neighborhood for tapas across the river</li>
+      <li>Metropol Parasol (Las Setas) for sunset views</li>
+    </ul>
+  </div>
+
+  <div class="day-card">
+    <h3>🚂 Wednesday, April 23 — Seville → Granada</h3>
+    <ul>
+      <li><strong>11:00 AM</strong> — Checkout (keys on table, take out trash)</li>
+      <li><strong>~12:17 PM</strong> — Renfe Avant train to Granada (~2 hr 35 min)</li>
+      <li>Arrive Granada early-mid afternoon</li>
+      <li>Taxi to Albaicín (pedestrian streets — no car access)</li>
+      <li><strong>3:00 PM</strong> — Check into Antonio's Airbnb</li>
+      <li>Explore the Albaicín — one of the oldest neighborhoods in Spain</li>
+      <li>Evening: Mirador de San Nicolás — famous Alhambra viewpoint + tapas</li>
+      <li>Watch the Alhambra light up from your balcony</li>
+    </ul>
+  </div>
+
+  <div class="day-card">
+    <h3>🕌 Thursday, April 24 — Full Day in Granada</h3>
+    <ul>
+      <li>Sleep in (you're on vacation!)</li>
+      <li>Morning: Explore Albaicín, Sacromonte (cave quarter), free tapas crawl</li>
+      <li>Granada gives you a free tapa with every drink — it's the law!</li>
+      <li>Alcazaba & Generalife Gardens — enter anytime during the day</li>
+      <li><strong>5:00 PM — Nasrid Palaces</strong> (TIMED ENTRY — do NOT be late!)</li>
+      <li>This is the crown jewel of the Alhambra — jaw-dropping Islamic architecture</li>
+      <li>Bring passports — they check ID at the Nasrid entrance</li>
+      <li>Allow 3+ hours for the full Alhambra complex</li>
+      <li>Golden hour light — the absolute best time to see it</li>
+      <li>Late dinner in the Albaicín, Alhambra lit up from your balcony</li>
+    </ul>
+  </div>
+
+  <div class="day-card">
+    <h3>🚗 Friday, April 25 — Granada → Nerja</h3>
+    <ul>
+      <li><strong>11:00 AM</strong> — Checkout from Antonio's</li>
+      <li>Taxi to Granada Airport (~25 min)</li>
+      <li><strong>11:30 AM</strong> — Pick up rental car (Enterprise, Ford Focus automatic)</li>
+      <li>Drive Granada → Nerja (~1–1.5 hours via A-44 south to the coast)</li>
+      <li>Windows down, Mediterranean views as you descend to the coast</li>
+      <li><strong>~2:00 PM</strong> — Check into Hotel Balcón de Europa</li>
+      <li>Walk out to the Balcón de Europa viewpoint — panoramic sea views</li>
+      <li>Beach time! La Caletilla is right in front of the hotel</li>
+      <li>Reserve hotel parking at front desk (€15/night, limited spots)</li>
+    </ul>
+  </div>
+
+  <div class="day-card">
+    <h3>🏖️ Saturday & Sunday, April 26–27 — Costa del Sol</h3>
+    <ul>
+      <li>Cuevas de Nerja — famous caves, 4 km from town, absolutely massive</li>
+      <li>Playa de Burriana — best beach in Nerja</li>
+      <li>Playa de Maro — wild, beautiful, natural coastline</li>
+      <li>Frigiliana — one of Spain's prettiest white villages (15 min drive)</li>
+      <li>Day trip option: Málaga city, Ronda, or Mijas</li>
+      <li>Fresh seafood, espetos (grilled sardines on the beach), sangria</li>
+      <li>Relax. You earned this.</li>
+    </ul>
+  </div>
+
+  <!-- =================== GETTING HOME =================== -->
+  <div class="section-title">🏠 Getting Home — Door to Door</div>
+
+  <div class="fun-card">
+    <h3>✈️ Monday, April 28 — The Long Way Home</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="t-time">7:00 AM</div>
+        <div class="t-what">Leave Nerja</div>
+        <div class="t-detail">Drive to Málaga Airport (~1 hour) &bull; Fill up gas before returning car (Full to Full)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">~8:00 AM</div>
+        <div class="t-what">Return Rental Car — Enterprise, Málaga Airport</div>
+        <div class="t-detail">22 Avenida del Comandante García Morato, Málaga 29004 &bull; Drop-off by 9:00 AM</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">~8:30 AM</div>
+        <div class="t-what">Through Security</div>
+        <div class="t-detail">Browse duty-free, grab a café con leche, last moments in Spain</div>
+      </div>
+      <div class="timeline-item flight">
+        <div class="t-time">11:05 AM → 2:10 PM</div>
+        <div class="t-what">Flight 3: Málaga → Amsterdam</div>
+        <div class="t-detail">KL3291 (Transavia 737-800) &bull; Seats: need to select!</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">2:10 – 5:05 PM</div>
+        <div class="t-what">Layover in Amsterdam (AMS)</div>
+        <div class="t-detail">2 hr 55 min &bull; Schiphol Airport — grab stroopwafels!</div>
+        <div class="t-callout">Bonus country! The Netherlands!</div>
+      </div>
+      <div class="timeline-item flight">
+        <div class="t-time">5:05 PM → 8:25 PM</div>
+        <div class="t-what">Flight 4: Amsterdam → Atlanta</div>
+        <div class="t-detail">KL0621 (KLM 777-300ER) &bull; Seats: need to select!</div>
+        <div class="t-callout">Big plane — 777! Movies, sleep, almost home</div>
+      </div>
+      <div class="timeline-item">
+        <div class="t-time">8:25 – 10:55 PM</div>
+        <div class="t-what">Layover in Atlanta (ATL)</div>
+        <div class="t-detail">2 hr 30 min &bull; Clear customs, recheck bags, grab food</div>
+      </div>
+      <div class="timeline-item flight">
+        <div class="t-time">10:55 PM → 11:58 PM</div>
+        <div class="t-what">Flight 5: Atlanta → HOME!</div>
+        <div class="t-detail">KL5296 (Delta CRJ900) &bull; Lance 11D, Missy 11C</div>
+        <div class="t-callout">Last flight! Land at 11:58 PM — you made it!</div>
+      </div>
+    </div>
+    <div style="margin-top: 1rem; padding: 0.8rem; background: rgba(139,26,26,0.06); border-radius: 10px; font-size: 0.85rem; text-align: center;">
+      <strong>Total return:</strong> Leave Nerja 7 AM → Home 11:58 PM &bull; 3 flights, 2 layovers, 2 countries, 1 epic trip
+    </div>
+  </div>
+
+  <!-- =================== HIGHLIGHTS =================== -->
+  <div class="section-title">⭐ Trip Highlights</div>
+  <div class="fun-card">
+    <ul class="adventure-list">
+      <li><span class="li-emoji">🏰</span><span>Real Alcázar — Moorish palace, GOT filming location</span><span class="cool-factor">Tues Apr 22, 11 AM</span></li>
+      <li><span class="li-emoji">⛪</span><span>Seville Cathedral & La Giralda — 3rd largest church in the world</span><span class="cool-factor">Climb the tower!</span></li>
+      <li><span class="li-emoji">🏛️</span><span>Plaza de España — Seville's crown jewel</span><span class="cool-factor">Most Instagrammed</span></li>
+      <li><span class="li-emoji">💃</span><span>Flamenco Show — authentic tablao in Seville</span><span class="cool-factor">Must-do!</span></li>
+      <li><span class="li-emoji">🕌</span><span>The Alhambra — Nasrid Palaces at golden hour</span><span class="cool-factor">Thurs Apr 24, 5 PM</span></li>
+      <li><span class="li-emoji">🌅</span><span>Mirador de San Nicolás — Alhambra sunset views</span><span class="cool-factor">Granada magic</span></li>
+      <li><span class="li-emoji">🍷</span><span>Free tapas in Granada — a tapa with every drink!</span><span class="cool-factor">It's the law!</span></li>
+      <li><span class="li-emoji">🏖️</span><span>Balcón de Europa — cliff-top panoramic views</span><span class="cool-factor">Our hotel is HERE</span></li>
+      <li><span class="li-emoji">🏔️</span><span>Cuevas de Nerja — massive underground caves</span><span class="cool-factor">4 km from hotel</span></li>
+      <li><span class="li-emoji">🏘️</span><span>Frigiliana — one of Spain's prettiest white villages</span><span class="cool-factor">15 min drive</span></li>
+      <li><span class="li-emoji">🚂</span><span>AVE High-Speed Train — 190 mph across Spain</span><span class="cool-factor">Madrid → Seville</span></li>
+      <li><span class="li-emoji">🧀</span><span>Stroopwafels in Amsterdam (layover bonus!)</span><span class="cool-factor">Bonus country!</span></li>
+    </ul>
+  </div>
+
+  <!-- =================== COOL FACTS =================== -->
+  <div class="section-title">🧠 Andalusia Facts</div>
+  <div class="fun-card" style="padding: 1rem;">
+    <div class="facts-grid">
+      <div class="fact-card">
+        <div class="fact-emoji">🕐</div>
+        <div class="fact-text">Dinner at 10 PM</div>
+        <div class="fact-detail">Spaniards eat LATE. Dinner starts 9-10 PM. Lunch at 2-3 PM.</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-emoji">😴</div>
+        <div class="fact-text">Siesta is Real</div>
+        <div class="fact-detail">Many shops close 2-5 PM. Plan around it!</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-emoji">🍺</div>
+        <div class="fact-text">Free Tapas in Granada</div>
+        <div class="fact-detail">Order a drink, get a free tapa. Hop from bar to bar!</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-emoji">💶</div>
+        <div class="fact-text">Euros (€)</div>
+        <div class="fact-detail">Cards accepted everywhere. Carry some cash for small spots.</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-emoji">🌡️</div>
+        <div class="fact-text">Highs 70s°F</div>
+        <div class="fact-detail">Perfect weather. Layers for cool evenings. Walking shoes a must.</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-emoji">⏰</div>
+        <div class="fact-text">7 Hours Ahead</div>
+        <div class="fact-detail">When it's noon in Spain, it's 5 AM in Arkansas.</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-emoji">🕌</div>
+        <div class="fact-text">800 Years of Moorish Rule</div>
+        <div class="fact-detail">Andalusia's architecture is a blend of Islamic, Christian, and Jewish heritage.</div>
+      </div>
+      <div class="fact-card">
+        <div class="fact-emoji">💃</div>
+        <div class="fact-text">Birthplace of Flamenco</div>
+        <div class="fact-detail">Seville is where flamenco was born. See it live!</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== IMPORTANT =================== -->
+  <div class="section-title">🛂 Don't Forget</div>
+  <div class="fun-card">
+    <ul class="adventure-list">
+      <li><span class="li-emoji">🛂</span><span><strong>Passports</strong> — Valid past July 28, 2026 (EU requires 3 months past departure)</span></li>
+      <li><span class="li-emoji">🎫</span><span><strong>Alcázar tickets</strong> — PDF in trip folder + emailed to Missy Feb 15</span></li>
+      <li><span class="li-emoji">🎫</span><span><strong>Alhambra tickets</strong> — PDF in trip folder + emailed to Missy Feb 15</span></li>
+      <li><span class="li-emoji">🚂</span><span><strong>Train tickets</strong> — Check Renfe.com around March 1!</span></li>
+      <li><span class="li-emoji">✈️</span><span><strong>Select seats</strong> — KL3291 (AGP→AMS) and KL0621 (AMS→ATL) still need seats</span></li>
+      <li><span class="li-emoji">🧳</span><span><strong>Carry-on only!</strong> — 0 checked bags included. Pack light or buy checked bags through KLM.</span></li>
+      <li><span class="li-emoji">📱</span><span><strong>eSIMs</strong> — Get 2 (Holafly or Airalo) for data in Spain</span></li>
+      <li><span class="li-emoji">💳</span><span><strong>Notify credit cards</strong> — Tell Amex/Chase about Spain Apr 20–28</span></li>
+      <li><span class="li-emoji">🗺️</span><span><strong>Download offline maps</strong> — Seville, Granada, Nerja, driving route</span></li>
+      <li><span class="li-emoji">🪪</span><span><strong>Driver's license</strong> — Lance needs it for the rental car</span></li>
+    </ul>
+  </div>
+
+  <div class="footer">
+    🇪🇸🏰💃🍷🌅🕌🏖️🚂🧀☀️
+  </div>
+
+</div>
+
+<script>
+  // Countdown to April 20, 2026 6:03 PM CST (first flight)
+  const target = new Date('2026-04-20T18:03:00-05:00').getTime();
+  function updateCountdown() {
+    const now = Date.now();
+    const diff = target - now;
+    if (diff <= 0) {
+      document.getElementById('days').textContent = '🎉';
+      document.getElementById('hours').textContent = 'VAMOS';
+      document.getElementById('mins').textContent = 'A';
+      document.getElementById('secs').textContent = '!!';
+      return;
+    }
+    document.getElementById('days').textContent = Math.floor(diff / (1000*60*60*24));
+    document.getElementById('hours').textContent = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    document.getElementById('mins').textContent = Math.floor((diff % (1000*60*60)) / (1000*60));
+    document.getElementById('secs').textContent = Math.floor((diff % (1000*60)) / 1000);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
